@@ -1,3 +1,56 @@
+
+<?php
+    session_start();
+
+    include "include/Config.php";
+    include "include/Database.php";
+
+?>
+
+<?php
+
+    $db = new Database();
+
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        if(isset($_POST['confirm_order']))
+        {
+            $first_name     = $_POST['first_name'];
+            $email_address  = $_POST['email_address'];
+            $district       = $_POST['district'];
+            $thana          = $_POST['thana'];
+            $phone          = $_POST['phone'];
+            $street_address = $_POST['street_address'];
+            $order_notes    = $_POST['order_notes'];
+
+            $sql1 = "INSERT INTO user(first_name,email_address,district,thana,phone,street_address,order_notes) VALUES ('$first_name', '$email_address', '$district', '$thana', '$phone', '$street_address', '$order_notes')";
+
+            $insert_row = $db->insert($sql1);
+
+            if($insert_row)
+            {
+                ?>
+
+               <script type="text/javascript">
+                 window.alert("Order placed successfully.");
+                 window.location='checkout.php';
+               </script>
+
+              <?php
+            }
+            else 
+            {
+               $msg = '<div class="alert alert-danger alert-dismissable w-75 m-auto" id="flash-msg"><strong>Error!</strong> Something went wrong! Data not added.</div><br/>';
+               echo $msg;
+               return false;
+            }
+
+        }
+    }
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +58,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Product - Online Super Market</title>
+    <title>Grocy - Online Super Market</title>
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="Bazar Lagbe">
     <meta name="author" content="p-themes">
@@ -24,7 +77,7 @@
 
 
     <div class="top-call uk-text-center py-2 py-sm-2 py-lg-1" style="background-color: #FFC310; color: #fff;">
-        <span class="mb-0"><i class="fa fa-phone fa-fw"></i><i class="fa fa-whatsapp fa-fw"></i> Call Us: <a href="tel:+880 1831-144838" style="text-decoration: none; color: #fff;">01831-144838</a> <small style="background-color: #696969; color: #000;" class="uk-badge mb-1">8am-10pm</small></span>
+        <span class="mb-0"><i class="fa fa-phone fa-fw"></i><i class="fa fa-whatsapp fa-fw"></i> Call Us: <a href="tel:+880 1831-144838" style="text-decoration: none; color: #fff;">01831-144838</a> <small><span class="uk-label" style="background-color: #FFE7D9; color: #FF6000; text-transform: capitalize; font-weight: normal; font-size: 12px; margin-bottom: 4px;">8am-10pm</span></small></span>
     </div>
 
     <!-- start top nav -->
@@ -272,6 +325,9 @@
     <!-- End bottom-nav section -->
 
 
+
+
+
     <!-- Start breadcrumb section -->
     <section id="breadcrumb-section" class="mt-3">
         <div class="uk-container">
@@ -279,11 +335,13 @@
                 <div class="col-12">
                     <nav aria-label="Breadcrumb">
                         <ul class="uk-breadcrumb">
-                            <li><a href="index.html" style="text-decoration: none;"><i class="fa fa-home fa-fw"></i>Home</a></li>
-                            <li><a href="#" style="text-decoration: none;">Vegetables</a></li>
-                            <li class="uk-disabled"><a>Cabbage (বাঁধাকপি)</a></li>
+                            <li><a href="index.html" style="text-decoration: none;">Home</a></li>
+                            <li><a href="cart.html" style="text-decoration: none;">Cart</a></li>
+                            <li class="uk-disabled"><a>Checkout</a></li>
                         </ul>
                     </nav>
+
+                    
                 </div>
             </div>
         </div>
@@ -293,244 +351,161 @@
 
 
 
-    <!-- Start product section -->
-    <section id="product-section" class="mt-1">
+
+
+    <!-- Start category section -->
+    <section id="shoppingcart-section" class="mt-1">
         <div class="uk-container">
+
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                    <div class="uk-card uk-card-default shadow-sm py-2 px-2" style="border-radius: 3px;">
-                        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; autoplay-interval: 3000; pause-on-hover: true">
-                            <div class="uk-slideshow-items" uk-lightbox="animation: slide">
-                            <div>
-                                <a href="https://static.vecteezy.com/system/resources/thumbnails/035/047/756/small_2x/ai-generated-high-quality-photo-of-fresh-green-cabbage-vegetable-png.png"><img src="https://static.vecteezy.com/system/resources/thumbnails/035/047/756/small_2x/ai-generated-high-quality-photo-of-fresh-green-cabbage-vegetable-png.png" width="300" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 50%;"></a>
-                            </div>
-                            <div>
-                                <a href="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2024/10/2/llnFQEdywq05PpdF7Ca3F1ZGtkIno3InIMPUWmps___lg.webp"><img src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2024/10/2/llnFQEdywq05PpdF7Ca3F1ZGtkIno3InIMPUWmps___lg.webp" width="300" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 50%;"></a>
-                            </div>
-                            <div>
-                                <a href="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/5/7/sIeD5F26iiGgFIX9eCLYWdsoK3XSfgQcYIahpsW5___lg.webp"><img src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/5/7/sIeD5F26iiGgFIX9eCLYWdsoK3XSfgQcYIahpsW5___lg.webp" width="300" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 50%;"></a>
-                            </div>
-                            <div>
-                                <a href="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/5/28/BdGXysVX9V2EAsaUmtdaqN8GkbbPnS1trlf1wvDU___lg.webp"><img src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/5/28/BdGXysVX9V2EAsaUmtdaqN8GkbbPnS1trlf1wvDU___lg.webp" width="300" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 50%;"></a>
-                            </div>
-                        </div>
-
-                        <a class="uk-position-center-left uk-position-small" href uk-slidenav-previous uk-slideshow-item="previous" style="color: #afafaf; width: 30px;"></a>
-                        <a class="uk-position-center-right uk-position-small" href uk-slidenav-next uk-slideshow-item="next" style="color: #afafaf; width: 30px;"></a>
-                        </div>
-                    
-
-
-
-                    <div class="uk-child-width-1-4 uk-child-width-1-4@s uk-child-width-1-4@m uk-child-width-1-4@l uk-child-width-1-4@xl uk-grid-small uk-grid-match uk-text-center mt-2" uk-grid uk-lightbox="animation: slide">
-                        <div>
-                            <a class="uk-inline" href="https://static.vecteezy.com/system/resources/thumbnails/035/047/756/small_2x/ai-generated-high-quality-photo-of-fresh-green-cabbage-vegetable-png.png" data-caption="Caption 1">
-                                <img src="https://static.vecteezy.com/system/resources/thumbnails/035/047/756/small_2x/ai-generated-high-quality-photo-of-fresh-green-cabbage-vegetable-png.png" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 100%; border: 1px solid #edeaea; border-radius: 3px;">
-                            </a>
-                        </div>
-                        <div>
-                            <a class="uk-inline" href="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2024/10/2/llnFQEdywq05PpdF7Ca3F1ZGtkIno3InIMPUWmps___lg.webp" data-caption="Caption 2">
-                                <img src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2024/10/2/llnFQEdywq05PpdF7Ca3F1ZGtkIno3InIMPUWmps___lg.webp" width="300" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 100%; border: 1px solid #edeaea; border-radius: 3px;">
-                            </a>
-                        </div>
-                        <div>
-                            <a class="uk-inline" href="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/5/7/sIeD5F26iiGgFIX9eCLYWdsoK3XSfgQcYIahpsW5___lg.webp" data-caption="Caption 3">
-                                <img src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/5/7/sIeD5F26iiGgFIX9eCLYWdsoK3XSfgQcYIahpsW5___lg.webp" width="300" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 100%; border: 1px solid #edeaea; border-radius: 3px;">
-                            </a>
-                        </div>
-                        <div>
-                            <a class="uk-inline" href="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/5/28/BdGXysVX9V2EAsaUmtdaqN8GkbbPnS1trlf1wvDU___lg.webp" data-caption="Caption 3">
-                                <img src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/5/28/BdGXysVX9V2EAsaUmtdaqN8GkbbPnS1trlf1wvDU___lg.webp" width="300" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 100%; border: 1px solid #edeaea; border-radius: 3px;">
-                            </a>
-                        </div>
-                    </div>
-
-                    </div>
-
-
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                    <div class="uk-card uk-card-default uk-card-body shadow-sm" style="border-radius: 3px;">
-                        <h5 class="mb-3" style="color: #000;">Rupchanda Soyabean Oil 5Ltr</h5>
-
-                        <h5><span style="color: #F99B0C;">TK 850.00</span> <span style="font-size: 16px; font-weight: normal;"> ~ 5kg</span> | <small style="font-size: 15px; font-weight: normal;"><del>TK 870.00</del></small> <img src="assets/img/discount-label.png" class="discount-label"> <span class="uk-label" style="background-color: #FFE7D9; color: #FF6000; text-transform: capitalize; font-weight: normal; font-size: 12px;">Save 20Tk</span></h5>
-                        <p style="font-weight: 500; font-size: 15px;">Qty: </p>
-
-                        <p><span><small>Availability: <span style="color: #0FCD5B; margin-right: 10px;">In Stock</span></small> <small>Category: </small><a href="#"><span class="uk-label px-2" style="background-color: #F0F6FB; color: #1598D9; text-transform: capitalize; font-size: 12px;">Vegetables</span></a></span></p>
-
-                        <a href="#" class="uk-button" style="background-color: #F99B0C; color: #fff; text-transform: capitalize; border-radius: 2px; font-size: 15px; margin-right: 10px;"><i class="fa fa-shopping-basket fa-fw"></i> Add to Cart</a>  
-                        <a href="#" class="uk-button" style="background-color: #000000; color: #fff; text-transform: capitalize; border-radius: 2px; font-size: 15px;">Buy Now</a> 
-
-                        <br><br><br>
-
-                        <ul uk-accordion>
-                            <li class="uk-open">
-                                <a class="uk-accordion-title" href style="font-weight: 500; text-decoration: none; font-size: 15px; color: #696969; border-bottom: 1px solid #dedfe5;">Description</a>
-                                <div class="uk-accordion-content">
-                                    <p style="font-size: 14px;">Cabbage is a member of the cruciferous vegetable family, which also includes broccoli, kale, and Brussels sprouts. It has a compact head of tightly packed leaves, with the outer leaves usually being darker than the inner leaves. The leaves are smooth and slightly waxy, and the heads can range in size from 1–8 lb.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="uk-accordion-title" href style="font-weight: 500; text-decoration: none; font-size: 15px; color: #696969; border-bottom: 1px solid #dedfe5;">Reviews</a>
-                                <div class="uk-accordion-content">
-                                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
-                                </div>
-                            </li>
-                        </ul>
-
-
+                <div class="mb-3">
+                    <div style="border-left: 3px solid #FFC310;">
+                        <h5 style="margin-left: 10px;">Checkout Details</h5>
                     </div>
                 </div>
+
+                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 mb-3">
+                    <div class="uk-card uk-card-default uk-card-body shadow-sm py-3 px-4" style="border-radius: 3px;">
+                        <h6 class="mt-3" style="color: #000;">BILLING & SHIPPING</h6>
+                        <hr>
+
+                            <?php 
+                                if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0)
+                                {
+                             ?>
+
+                            <form class="uk-grid-small" uk-grid action="checkout.php" method="POST">
+                                <div class="uk-width-1-2@s">
+                                    <label for="" class="mb-2">First name <span class="text-danger">*</span></label>
+                                    <input class="uk-input" type="text" name="first_name" required>
+                                </div>
+                                <div class="uk-width-1-2@s">
+                                    <label for="" class="mb-2">Email address (optional)</label>
+                                    <input class="uk-input" type="text" name="email_address">
+                                </div>
+                                <div class="uk-width-1-1@s">
+                                    <label for="" class="mb-2">Division / District <span class="text-danger">*</span></label>
+                                    <select class="uk-select" name="district" required>
+                                        <option selected disabled>Select an option...</option>
+                                        <option>Dhaka</option>
+                                        <option>Chattogram</option>
+                                        <option>Rajshahi</option>
+                                    </select>
+                                </div>
+                                <div class="uk-width-1-1@s">
+                                    <label for="" class="mb-2">City / Thana <span class="text-danger">*</span></label>
+                                    <select class="uk-select" name="thana" required>
+                                        <option selected disabled>Select an option...</option>
+                                        <option>Anwara</option>
+                                        <option>Chawkbazar</option>
+                                        <option>Kotwali Chattogram</option>
+                                    </select>
+                                </div>
+                                <div class="uk-width-1-2@s">
+                                    <label for="" class="mb-2">Phone <span class="text-danger">*</span></label>
+                                    <input class="uk-input" type="text" name="phone" required>
+                                </div>
+                                <div class="uk-width-1-2@s">
+                                    <label for="" class="mb-2">Street address <span class="text-danger">*</span></label>
+                                    <input class="uk-input" type="text" name="street_address" placeholder="House number and street name" required>
+                                </div>
+                                <div class="uk-width-1-1@s mb-3">
+                                    <label for="" class="mb-2">Order notes (optional)</label>
+                                    <textarea class="uk-textarea" name="order_notes" rows="4" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                </div>
+                            
+
+                        </div>
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                    <div class="uk-card uk-card-default uk-card-body shadow-sm py-4" style="border-radius: 3px;">
+                        <div class="uk-card-title mt-2" href style="font-weight: 500; text-decoration: none; font-size: 16px; color: #F99B0C;">YOUR ORDER</div>
+
+                        <table class="uk-table uk-table-divider uk-table-hover uk-table-small" style="background-color: #F8F8F8;">
+                            <thead>
+                                <tr>
+                                    <th style="font-weight: 500; color: #000;">Product</th>
+                                    <th class="uk-float-right" style="font-weight: 500; color: #000;">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+
+                                    $sub_total = 0;
+                                    $total = 0;
+
+                                    if(isset($_SESSION['cart']))
+                                    {
+                                        foreach($_SESSION['cart'] as $key => $value)
+                                        {
+                                            $sub_total = $sub_total + ($value['price'] * $value['quantity']);
+                                            ?>
+                                                <tr> 
+                                                    <td style="text-transform: capitalize; font-size: 14px;"><?php echo $value['product_name'] ?> <br> <?php echo $value['quantity']; ?> × <?php echo $value['price'] ?> TK</td>
+                                                    <td class="uk-text-right product_subtotal" style="font-size: 14px; font-weight: 500;"></td>
+
+                                                    <input type="hidden" class="product_price" value="<?php echo $value['price']; ?>">
+                                                    <input type="hidden" class="product_quantity" value="<?php echo $value['quantity']; ?>">
+
+                                                </tr>
+                                            <?php
+                                        }
+
+                                        $total = $sub_total + 60;
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+
+                        <table class="uk-table uk-table-divider uk-table-small">
+                            <tbody>
+                                <tr>
+                                    <th style="text-transform: capitalize; font-size: 15px;">Subtotal</th>
+                                    <td class="uk-text-right" style="font-weight: 500; color: #282626; font-size: 15px;"><?php echo $sub_total." TK"; ?></td>
+                                </tr>
+                                <tr>
+                                    <th style="text-transform: capitalize; font-size: 15px;">Shipping</th>
+                                    <td class="uk-text-right" style="font-size: 13px;">Inside Chattogram: 60.00 TK</td>
+                                </tr>
+                                <tr>
+                                    <th style="text-transform: capitalize; font-size: 15px;">Total</th>
+                                    <td class="uk-text-right" style="font-weight: 500; font-size: 18px; color: #28A745;"><?php echo $total." TK"; ?>
+                                        <input type="hidden" name="grand_total" value="<?php echo $grand_total; ?>">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h6 class="mt-4 mb-3">Payment Options</h6>
+
+                            <div class="uk-form-controls mb-4 pb-2">
+                                <label class="mb-2" style="font-weight: 500; color: #000;"><input class="uk-radio" type="radio" name="radio1" checked> Cash On Delivery <img src="assets/img/social/cod-2.png" width="50" style="background-color: #fff; border-radius: 2px; padding: 3px 5px;"></label>
+                                <br>
+                                <label style="font-weight: 500; color: #000;"><input class="uk-radio" type="radio" name="radio1"> Bkash <img src="https://freepnglogo.com/images/all_img/1701541855%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6-%E0%A6%B2%E0%A6%97%E0%A7%8B.png" width="65" style="background-color: #fff; border-radius: 2px; padding: 3px 5px;"></label>
+                            </div>
+
+                            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                <label><input class="uk-checkbox" type="checkbox" checked>  I have read and agree to the website <a href="#" style="text-decoration: none;">Terms and conditions</a> <span class="text-danger">*</span></label>
+                            </div>
+
+                        <button type="submit" name="confirm_order" class="uk-button uk-width-1-1 uk-margin-small-bottom" style="background-color: #000; color: #fff; border-radius: 2px; text-transform: capitalize; font-size: 15px; font-weight: 500;">CONFIRM ORDER</button>
+
+                        </form>
+
+                            <?php 
+                                }
+                             ?>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
     <!-- End category section -->
 
 
-    <!-- Start newproducts section -->
-    <section id="similarproduct-section" class="mt-4">
-        <div class="uk-container">
-            <div class="row">
-
-                <div style="margin-top: 40px;">
-                    <div class="uk-float-left d-inline" style="border-left: 3px solid #FFC310;">
-                        <h5 style="margin-left: 10px;">SIMILAR PRODUCTS</h5>
-                    </div>
-                    <div class="uk-float-right d-inline">
-                        <form class="uk-search uk-search-default lg_form" style="width: 400px;">
-                            <input class="uk-search-input" type="search" placeholder="Search products..." aria-label="Search" style="background-color: #fff; border-radius: 3px; border: 1px solid rgba(255, 195, 16, 0.5); font-size: 14px;">
-                            <button class="uk-search-icon" uk-search-icon></button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="mb-2 mt-2">
-                    <form class="uk-search uk-search-default sm_form" style="width: 100%;">
-                        <input class="uk-search-input" type="search" placeholder="Search products..." aria-label="Search" style="background-color: #fff; border-radius: 3px; border: 1px solid rgba(255, 195, 16, 0.5); font-size: 14px;">
-                        <button class="uk-search-icon" uk-search-icon></button>
-                    </form>
-                </div>
-
-                <div class="uk-slider-container-offset mx-auto" uk-slider="autoplay: true; autoplay-interval: 2500; pause-on-hover: true;">
-
-                <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
-
-                    <div class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-child-width-1-5@l uk-child-width-1-5@xl uk-grid-small uk-grid-match" uk-grid>
-                        <div>
-                            <a href="#">
-                                <div class="uk-card uk-card-default mb-3" style="border-radius: 3px;">
-                                    <div class="uk-card-media-top">
-                                        <div class="uk-card-badge uk-label" style="background-color: #2395F3; color: #fff; text-transform: capitalize;">New</div>
-                                        <img class="pt-4" src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/3/30/7FXenA9r0EzeHmNnEDAgPLeftJ5SNqrCSnkRsPcI___lg.webp" width="400" height="400" alt="product-img" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
-                                    </div>
-                                    <div class="uk-card-body mt-4 pt-0">
-                                        <h6 style="color: #000;">Cabbage (বাঁধাকপি)</h6>
-                                        <small class="text-muted">1KG</small>
-                                        <h6 style="color: #000;">TK 60.00</h6>
-
-                                        <a href="#" class="uk-button mt-2" style="background-color: #F99B0C; text-transform: capitalize; border-radius: 2px; width: 100%;"><i class="fa fa-shopping-basket fa-fw"></i> Add to Cart</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="uk-card uk-card-default mb-3" style="border-radius: 3px;">
-                                    <div class="uk-card-media-top">
-                                        <div class="uk-card-badge uk-label" style="background-color: #2395F3; color: #fff; text-transform: capitalize;">New</div>
-                                        <img class="pt-4" src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/10/2/QUcQX7LY4VbLxXTm1krLhewyZnoK10DmyJd33Naw___lg.webp" width="400" height="400" alt="product-img" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
-                                    </div>
-                                    <div class="uk-card-body mt-4 pt-0">
-                                        <h6 style="color: #000;">Cabbage (বাঁধাকপি)</h6>
-                                        <small class="text-muted">1KG</small>
-                                        <h6 style="color: #000;">TK 60.00</h6>
-
-                                        <a href="#" class="uk-button mt-2" style="background-color: #F99B0C; text-transform: capitalize; border-radius: 2px; width: 100%;"><i class="fa fa-shopping-basket fa-fw"></i> Add to Cart</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="uk-card uk-card-default mb-3" style="border-radius: 3px;">
-                                    <div class="uk-card-media-top">
-                                        <div class="uk-card-badge uk-label" style="background-color: #2395F3; color: #fff; text-transform: capitalize;">New</div>
-                                        <img class="pt-4" src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/3/30/7FXenA9r0EzeHmNnEDAgPLeftJ5SNqrCSnkRsPcI___lg.webp" width="400" height="400" alt="product-img" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
-                                    </div>
-                                    <div class="uk-card-body mt-4 pt-0">
-                                        <h6 style="color: #000;">Cabbage (বাঁধাকপি)</h6>
-                                        <small class="text-muted">1KG</small>
-                                        <h6 style="color: #000;">TK 60.00</h6>
-
-                                        <a href="#" class="uk-button mt-2" style="background-color: #F99B0C; text-transform: capitalize; border-radius: 2px; width: 100%;"><i class="fa fa-shopping-basket fa-fw"></i> Add to Cart</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="uk-card uk-card-default mb-3" style="border-radius: 3px;">
-                                    <div class="uk-card-media-top">
-                                        <div class="uk-card-badge uk-label" style="background-color: #2395F3; color: #fff; text-transform: capitalize;">New</div>
-                                        <img class="pt-4" src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/10/2/QUcQX7LY4VbLxXTm1krLhewyZnoK10DmyJd33Naw___lg.webp" width="400" height="400" alt="product-img" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
-                                    </div>
-                                    <div class="uk-card-body mt-4 pt-0">
-                                        <h6 style="color: #000;">Cabbage (বাঁধাকপি)</h6>
-                                        <small class="text-muted">1KG</small>
-                                        <h6 style="color: #000;">TK 60.00</h6>
-
-                                        <a href="#" class="uk-button mt-2" style="background-color: #F99B0C; text-transform: capitalize; border-radius: 2px; width: 100%;"><i class="fa fa-shopping-basket fa-fw"></i> Add to Cart</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="uk-card uk-card-default mb-3" style="border-radius: 3px;">
-                                    <div class="uk-card-media-top">
-                                        <div class="uk-card-badge uk-label" style="background-color: #2395F3; color: #fff; text-transform: capitalize;">New</div>
-                                        <img class="pt-4" src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/3/30/7FXenA9r0EzeHmNnEDAgPLeftJ5SNqrCSnkRsPcI___lg.webp" width="400" height="400" alt="product-img" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
-                                    </div>
-                                    <div class="uk-card-body mt-4 pt-0">
-                                        <h6 style="color: #000;">Cabbage (বাঁধাকপি)</h6>
-                                        <small class="text-muted">1KG</small>
-                                        <h6 style="color: #000;">TK 60.00</h6>
-
-                                        <a href="#" class="uk-button mt-2" style="background-color: #F99B0C; text-transform: capitalize; border-radius: 2px; width: 100%;"><i class="fa fa-shopping-basket fa-fw"></i> Add to Cart</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <div class="uk-card uk-card-default mb-3" style="border-radius: 3px;">
-                                    <div class="uk-card-media-top">
-                                        <div class="uk-card-badge uk-label" style="background-color: #2395F3; color: #fff; text-transform: capitalize;">New</div>
-                                        <img class="pt-4" src="https://s3-ap-southeast-1.amazonaws.com/com.meenabazaronline.v1.01/product/2023/10/2/QUcQX7LY4VbLxXTm1krLhewyZnoK10DmyJd33Naw___lg.webp" width="400" height="400" alt="product-img" style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
-                                    </div>
-                                    <div class="uk-card-body mt-4 pt-0">
-                                        <h6 style="color: #000;">Cabbage (বাঁধাকপি)</h6>
-                                        <small class="text-muted">1KG</small>
-                                        <h6 style="color: #000;">TK 60.00</h6>
-
-                                        <a href="#" class="uk-button mt-2" style="background-color: #F99B0C; text-transform: capitalize; border-radius: 2px; width: 100%;"><i class="fa fa-shopping-basket fa-fw"></i> Add to Cart</a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <a class="uk-position-center-left uk-position-small" href uk-slidenav-previous uk-slider-item="previous" style="color: #7A7D7F;"></a>
-                    <a class="uk-position-center-right uk-position-small" href uk-slidenav-next uk-slider-item="next" style="color: #7A7D7F;"></a>
-
-                </div>
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End newproduct section -->
 
 
     <!-- Start footer section -->
@@ -595,5 +570,36 @@
     <!-- Bootstrap v5.3.3 JS -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- input field with inc/dec button js -->
+    <script src="assets/js/quantityfield.js"></script>
+
+
+
+
+    <script>
+        
+        var gst = 0;
+        var product_price    = document.getElementsByClassName('product_price');
+        var product_quantity = document.getElementsByClassName('product_quantity');
+        var product_subtotal = document.getElementsByClassName('product_subtotal');
+        var grand_subtotal   = document.getElementById('grand_subtotal');
+
+        function subTotal()
+        {
+            gst = 0;
+            for (i=0; i<product_price.length; i++) 
+            {
+                product_subtotal[i].innerText = (product_price[i].value)*(product_quantity[i].value)+" TK";
+
+                gst = gst+(product_price[i].value)*(product_quantity[i].value);
+            }
+            grand_subtotal.innerText = gst+" TK";
+        }
+
+        subTotal();
+
+    </script>
+
+
 </body>
 </html>

@@ -61,7 +61,7 @@ body{
 }
 
 
-#allproducts-section form{
+#allproducts-section .sm_form{
 	display: none;
 }
 
@@ -111,12 +111,12 @@ body{
 		margin-top: 13px;
 	}
 
-	#breadcrumb-section form{
+	#allproducts-section .lg_form{
 		display: none;
 	}
 
-	#allproducts-section form{
-		display: inline;
+	#allproducts-section .sm_form{
+		display: block;
 	}
 
 }
