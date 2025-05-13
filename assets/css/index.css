@@ -105,7 +105,7 @@ body{
 		width: 23px;
 	}
 	#mobile-navbar .uk-navbar-left .nav_logo {
-		width: 100px;
+		width: 120px;
 	}
 
 }
@@ -161,8 +161,11 @@ body{
 	#mobile-navbar .uk-navbar-right img {
 		width: 23px;
 	}
+	#mobile-navbar .uk-navbar-right .uk-button {
+		font-size: 12px;
+	}
 	#mobile-navbar .uk-navbar-left .nav_logo {
-		width: 100px;
+		width: 120px;
 	}
 	
 
