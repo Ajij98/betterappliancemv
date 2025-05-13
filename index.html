@@ -219,18 +219,42 @@
                                                         
 
                                                         <div>
-                                                        <ul class="uk-nav-default" uk-nav="multiple: true">
-                                                            <li class="uk-parent">
-                                                                <a href="#" style="font-size: 13px; margin-bottom: 10px;"><img src="assets/img/nav_icon/m64.png" width="22" style="margin-right: 12px;">MEAT <span uk-nav-parent-icon></span></a>
-                                                                <ul class="uk-nav-sub" style="margin-bottom: 15px; margin-top: 0px; padding-top: 10px; border-radius: 3px; background-color: #f9f9f9;">
-                                                                    <li><a href="#" style="font-size: 15px; margin-left: 20px; margin-bottom: 10px;">Beef</a></li>
-                                                                    <li><a href="#" style="font-size: 15px; margin-left: 20px; margin-bottom: 10px;">Chicken</a></li>
-                                                                    <li><a href="#" style="font-size: 15px; margin-left: 20px; margin-bottom: 10px;">Mutton</a></li>
-                                                                </ul>
-                                                            </li>
-                                                          
-                                                        </ul>
-                                                    </div>
+    <ul class="uk-nav-default" uk-nav="multiple: true">
+        <li class="uk-parent">
+            <a href="#" style="font-size: 15px; margin-bottom: 10px;"><img src="assets/img/nav_icon/refrigerator.png" width="24" style="margin-right: 12px;">Fridge</a>
+        </li>
+        <hr class="my-0 py-0 mb-2">
+        <li class="uk-parent">
+            <a href="#" style="font-size: 15px; margin-bottom: 10px;"><img src="assets/img/nav_icon/refrigerator.png" width="24" style="margin-right: 12px;">Washing Machine</a>
+        </li>
+        <hr class="my-0 py-0 mb-2">
+        <li class="uk-parent">
+            <a href="#" style="font-size: 15px; margin-bottom: 10px;"><img src="assets/img/nav_icon/refrigerator.png" width="24" style="margin-right: 12px;">Dryer</a>
+        </li>
+        <hr class="my-0 py-0 mb-2">
+        <li class="uk-parent">
+            <a href="#" style="font-size: 15px; margin-bottom: 10px;"><img src="assets/img/nav_icon/refrigerator.png" width="24" style="margin-right: 12px;">Dishwasher</a>
+        </li>
+        <hr class="my-0 py-0 mb-2">
+        <li class="uk-parent">
+            <a href="#" style="font-size: 15px; margin-bottom: 10px;"><img src="assets/img/nav_icon/refrigerator.png" width="24" style="margin-right: 12px;">Microwave</a>
+        </li>
+        <hr class="my-0 py-0 mb-2">
+        <li class="uk-parent">
+            <a href="#" style="font-size: 15px; margin-bottom: 10px;"><img src="assets/img/nav_icon/refrigerator.png" width="24" style="margin-right: 12px;">Electric Stove</a>
+        </li>
+        <hr class="my-0 py-0 mb-2">
+        <li class="uk-parent">
+            <a href="#" style="font-size: 15px; margin-bottom: 10px;"><img src="assets/img/nav_icon/refrigerator.png" width="24" style="margin-right: 12px;">Gas Stove</a>
+        </li>
+        <hr class="my-0 py-0 mb-2">
+        <li class="uk-parent">
+            <a href="#" style="font-size: 15px; margin-bottom: 10px;"><img src="assets/img/nav_icon/refrigerator.png" width="24" style="margin-right: 12px;">Hood Vent</a>
+        </li>
+    </ul>
+</div>
+
+
                                                     </ul>
                                                 </div>
                                             </div>
@@ -238,7 +262,7 @@
 
                                         <li>
                                             <div style="padding-top: 14px; padding-bottom: 10px;">
-                                                <a href="#"><img class="nav_logo" src="assets/img/logo.PNG"></a>
+                                                <a href="#"><img class="nav_logo" src="assets/img/logo.jpg"></a>
                                             </div>
                                         </li>
                                     </ul>
@@ -259,7 +283,9 @@
 
                                         
                                         <li>
-                                            <a href="#" uk-toggle="target: #offcanvas-flip"><img src="assets/img/basket-7.png" uk-tooltip="title: Cart; pos: bottom" width="32"><sup><span class="uk-badge" style="background-color: #F99B0C;">3</span></sup></a>
+
+                                            <a uk-toggle="target: #offcanvas-flip"><button class="uk-button uk-button-danger uk-button-small" style=" border-radius: 25px;"><i class="fa fa-paper-plane fa-fw"></i> Enquiry</button></a>
+
                                             <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
                                                 <div class="uk-offcanvas-bar" style="background-color: #fff; color: #000;">
                                                     <button class="uk-offcanvas-close" type="button" uk-close style="color: #000;"></button>
@@ -300,13 +326,24 @@
                                             </div>
                                         </li>
 
-
-
                                         <li>
-                                            <a href="#" style="padding-left: 5px;"><img src="assets/img/user.png" uk-tooltip="title: Login; pos: bottom" width="32"></a>
+                                            <a href="#"><img src="assets/img/down-arrow.png" width="24"></a>
+                                            <div uk-dropdown="animation: slide-top; animate-out: true; duration: 600">
+                                                <ul class="uk-nav uk-dropdown-nav">
+                                                    <li><a href="#">Our Outlets</a></li>
+                                                    <li class="uk-nav-divider"></li>
+                                                    <li><a href="#">Offers</a></li>
+                                                    <li class="uk-nav-divider"></li>
+                                                    <li><a href="#">FAQ</a></li>
+                                                    <li class="uk-nav-divider"></li>
+                                                    <li><a href="#">Blog</a></li>
+                                                    <li class="uk-nav-divider"></li>
+                                                    <li><a href="#">About Us</a></li>
+                                                    <li class="uk-nav-divider"></li>
+                                                    <li><a href="#">Contact Us</a></li>
+                                                </ul>
+                                            </div>
                                         </li>
-
-                                        
 
                                     </ul>
                                 </div>
@@ -453,7 +490,7 @@
                         <h5 style="margin-left: 10px;">NEW ARRIVALS</h5>
                     </div>
                     <div class="uk-float-right d-inline" style="margin-top: 20px; margin-bottom: 30px;">
-                        <a href="newarrivals.html" class="uk-button uk-button-small shadow-sm" style="border: 1px solid #3399FF; color: #3399FF; border-radius: 2px; text-transform: capitalize;">See All <span uk-icon="icon: arrow-right"></span></a>
+                        <a href="newarrivals.html" class="uk-button uk-button-small shadow-sm" style="border: 1px solid #3399FF; color: #3399FF; border-radius: 2px; text-transform: capitalize;">View All <span uk-icon="icon: arrow-right"></span></a>
                     </div>
                 </div>
 
@@ -625,7 +662,7 @@
                         <h5 style="margin-left: 10px;">TRENDING PRODUCTS</h5>
                     </div>
                     <div class="uk-float-right d-inline" style="margin-top: 20px; margin-bottom: 30px;">
-                        <a href="allproducts.html" class="uk-button uk-button-small shadow-sm" style="border: 1px solid #3399FF; color: #3399FF; border-radius: 2px; text-transform: capitalize;">See All <span uk-icon="icon: arrow-right"></span></a>
+                        <a href="allproducts.html" class="uk-button uk-button-small shadow-sm" style="border: 1px solid #3399FF; color: #3399FF; border-radius: 2px; text-transform: capitalize;">View All <span uk-icon="icon: arrow-right"></span></a>
                     </div>
                 </div>
 
@@ -791,13 +828,12 @@
     <section id="brand-section" class="mt-4 pt-4">
         <div class="uk-container">
             <div class="row">
-
                 <div>
                     <div class="uk-float-left d-inline" style="margin-top: 20px; margin-bottom: 30px; border-left: 3px solid #3399FF;">
                         <h5 style="margin-left: 10px;">OUR BRANDS</h5>
                     </div>
                     <div class="uk-float-right d-inline" style="margin-top: 20px; margin-bottom: 30px;">
-                        <a href="brand.html" class="uk-button uk-button-small shadow-sm" style="border: 1px solid #3399FF; color: #3399FF; border-radius: 2px; text-transform: capitalize;">See All <span uk-icon="icon: arrow-right"></span></a>
+                        <a href="brand.html" class="uk-button uk-button-small shadow-sm" style="border: 1px solid #3399FF; color: #3399FF; border-radius: 2px; text-transform: capitalize;">View All <span uk-icon="icon: arrow-right"></span></a>
                     </div>
                 </div>
 
